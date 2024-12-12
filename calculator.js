@@ -3,8 +3,23 @@ var operationCount = 0;
 var lastNum = ""; 
 var lastOperation = ""; 
 
+function clean() {
+    document.getElementById('result').innerHTML = "";
+    operationCount = 0; 
+    lastNum = ""; 
+}
+
+function clearNada() {
+    let resultado = document.getElementById('result');
+    if (resultado.textContent === "Nada...") {
+        clean();
+    }
+}
+
 function insert(num) {
+    clearNada(); // Verifica e limpa "Nada..."
     var numero = document.getElementById('result').innerHTML;
+    
     if(num === ',' && lastNum.includes(',')) {
         return;
     }
@@ -42,6 +57,7 @@ function clean() {
 }
 
 function back() {
+    clearNada(); // Verifica e limpa "Nada..."
     var result = document.getElementById('result').innerHTML;
     var lastChar = result.slice(-1);
     if(['+', '-', 'x', '÷'].includes(lastChar)) {
@@ -54,6 +70,7 @@ function back() {
 }
 
 function calculate() {
+    clearNada(); // Verifica e limpa "Nada..."
     var result = document.getElementById('result').innerHTML;
     if(result) {
         var originalResult = result;
@@ -74,6 +91,7 @@ function calculate() {
 }
 
 function calculatePercentage() {
+    clearNada(); // Verifica e limpa "Nada..."
     var result = document.getElementById('result').innerHTML;
     if(result) {
         document.getElementById('result').innerHTML = eval(result) / 100;
@@ -81,6 +99,7 @@ function calculatePercentage() {
 }
 
 function toggleSign() {
+    clearNada(); // Verifica e limpa "Nada..."
     var result = document.getElementById('result').innerHTML;
     if(result.charAt(0) === "-") {
         document.getElementById('result').innerHTML = result.slice(1);
